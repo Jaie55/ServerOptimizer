@@ -1,4 +1,4 @@
-# ServerOptimizer v1.0.0
+# ServerOptimizer v1.0.1
 
 ## Description
 Optimizes server FPS dynamically based on player count. Reduces CPU usage when server is empty.
@@ -93,7 +93,7 @@ MIT License - Copyright (c) 2025 Jaie55
 
 ---
 
-# ServerOptimizer v1.0.0 (Español)
+# ServerOptimizer v1.0.1 (Español)
 
 ## Descripción
 Optimiza los FPS del servidor según el número de jugadores. Reduce el uso de CPU cuando está vacío.
