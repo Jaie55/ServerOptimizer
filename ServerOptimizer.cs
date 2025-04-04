@@ -361,6 +361,24 @@ namespace Carbon.Plugins
                     };
                     break;
                 
+                case "en-PT":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "Ye don't have permission to use this command, matey!",
+                        ["FPS Adjusted"] = "Ship's FPS be adjusted to {0} ({1} sailors aboard)",
+                        ["Status Header"] = "ServerOptimizer Ship's Log:",
+                        ["Status Current FPS"] = "- Current FPS: {0}",
+                        ["Status Player Count"] = "- Crew Members: {0}",
+                        ["Status Dynamic Mode"] = "- Dynamic adjustment: {0}",
+                        ["Enabled"] = "Aye",
+                        ["Disabled"] = "Nay",
+                        ["Toggle On"] = "Dynamic FPS adjustment be enabled, arr!",
+                        ["Toggle Off"] = "Dynamic FPS adjustment be disabled, arr!",
+                        ["Default FPS Restored"] = "FPS restored to 60, full sail ahead!",
+                        ["Help Header"] = "ServerOptimizer Treasure Map:"
+                    };
+                    break;
+                
                 case "es":
                     messages = new Dictionary<string, string>
                     {
@@ -397,31 +415,332 @@ namespace Carbon.Plugins
                     };
                     break;
                 
+                case "ca":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "No tens permís per utilitzar aquesta ordre",
+                        ["FPS Adjusted"] = "FPS del servidor ajustats a {0} ({1} jugadors connectats)",
+                        ["Status Header"] = "Estat del ServerOptimizer:",
+                        ["Status Current FPS"] = "- FPS Actuals: {0}",
+                        ["Status Player Count"] = "- Jugadors Connectats: {0}",
+                        ["Status Dynamic Mode"] = "- Ajust dinàmic: {0}",
+                        ["Enabled"] = "Activat",
+                        ["Disabled"] = "Desactivat",
+                        ["Toggle On"] = "Ajust dinàmic de FPS activat",
+                        ["Toggle Off"] = "Ajust dinàmic de FPS desactivat",
+                        ["Default FPS Restored"] = "FPS restaurats a 60",
+                        ["Help Header"] = "Ajuda de ServerOptimizer:"
+                    };
+                    break;
+                
+                case "fr":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "Vous n'avez pas la permission d'utiliser cette commande",
+                        ["FPS Adjusted"] = "FPS du serveur ajustés à {0} ({1} joueurs en ligne)",
+                        ["Status Header"] = "État du ServerOptimizer:",
+                        ["Status Current FPS"] = "- FPS actuels: {0}",
+                        ["Status Player Count"] = "- Joueurs en ligne: {0}",
+                        ["Status Dynamic Mode"] = "- Ajustement dynamique: {0}",
+                        ["Enabled"] = "Activé",
+                        ["Disabled"] = "Désactivé",
+                        ["Toggle On"] = "Ajustement dynamique des FPS activé",
+                        ["Toggle Off"] = "Ajustement dynamique des FPS désactivé",
+                        ["Default FPS Restored"] = "FPS restaurés à 60",
+                        ["Help Header"] = "Aide de ServerOptimizer:"
+                    };
+                    break;
+                
+                case "de":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "Sie haben keine Berechtigung, diesen Befehl zu verwenden",
+                        ["FPS Adjusted"] = "Server-FPS auf {0} eingestellt ({1} Spieler online)",
+                        ["Status Header"] = "ServerOptimizer-Status:",
+                        ["Status Current FPS"] = "- Aktuelle FPS: {0}",
+                        ["Status Player Count"] = "- Spieler online: {0}",
+                        ["Status Dynamic Mode"] = "- Dynamische Anpassung: {0}",
+                        ["Enabled"] = "Aktiviert",
+                        ["Disabled"] = "Deaktiviert",
+                        ["Toggle On"] = "Dynamische FPS-Anpassung aktiviert",
+                        ["Toggle Off"] = "Dynamische FPS-Anpassung deaktiviert",
+                        ["Default FPS Restored"] = "FPS auf 60 zurückgesetzt",
+                        ["Help Header"] = "ServerOptimizer-Hilfe:"
+                    };
+                    break;
+                
+                case "it":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "Non hai il permesso di usare questo comando",
+                        ["FPS Adjusted"] = "FPS del server regolati a {0} ({1} giocatori online)",
+                        ["Status Header"] = "Stato ServerOptimizer:",
+                        ["Status Current FPS"] = "- FPS attuali: {0}",
+                        ["Status Player Count"] = "- Giocatori online: {0}",
+                        ["Status Dynamic Mode"] = "- Regolazione dinamica: {0}",
+                        ["Enabled"] = "Attivato",
+                        ["Disabled"] = "Disattivato",
+                        ["Toggle On"] = "Regolazione dinamica FPS attivata",
+                        ["Toggle Off"] = "Regolazione dinamica FPS disattivata",
+                        ["Default FPS Restored"] = "FPS ripristinati a 60",
+                        ["Help Header"] = "Aiuto ServerOptimizer:"
+                    };
+                    break;
+                
+                case "ru":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "У вас нет разрешения на использование этой команды",
+                        ["FPS Adjusted"] = "FPS сервера установлен на {0} ({1} игроков онлайн)",
+                        ["Status Header"] = "Статус ServerOptimizer:",
+                        ["Status Current FPS"] = "- Текущий FPS: {0}",
+                        ["Status Player Count"] = "- Игроков онлайн: {0}",
+                        ["Status Dynamic Mode"] = "- Динамическая настройка: {0}",
+                        ["Enabled"] = "Включено",
+                        ["Disabled"] = "Выключено",
+                        ["Toggle On"] = "Динамическая настройка FPS включена",
+                        ["Toggle Off"] = "Динамическая настройка FPS выключена",
+                        ["Default FPS Restored"] = "FPS восстановлен до 60",
+                        ["Help Header"] = "Справка ServerOptimizer:"
+                    };
+                    break;
+                    
+                case "pt":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "Você não tem permissão para usar este comando",
+                        ["FPS Adjusted"] = "FPS do servidor ajustado para {0} ({1} jogadores online)",
+                        ["Status Header"] = "Status do ServerOptimizer:",
+                        ["Status Current FPS"] = "- FPS atual: {0}",
+                        ["Status Player Count"] = "- Jogadores online: {0}",
+                        ["Status Dynamic Mode"] = "- Ajuste dinâmico: {0}",
+                        ["Enabled"] = "Ativado",
+                        ["Disabled"] = "Desativado",
+                        ["Toggle On"] = "Ajuste dinâmico de FPS ativado",
+                        ["Toggle Off"] = "Ajuste dinâmico de FPS desativado",
+                        ["Default FPS Restored"] = "FPS restaurado para 60",
+                        ["Help Header"] = "Ajuda do ServerOptimizer:"
+                    };
+                    break;
+
+                case "pt-BR":
+                    messages = new Dictionary<string, string>
+                    {
+                        ["No Permission"] = "Você não tem permissão para usar este comando",
+                        ["FPS Adjusted"] = "FPS do servidor ajustado para {0} ({1} jogadores online)",
+                        ["Status Header"] = "Status do ServerOptimizer:",
+                        ["Status Current FPS"] = "- FPS atual: {0}",
+                        ["Status Player Count"] = "- Jogadores online: {0}",
+                        ["Status Dynamic Mode"] = "- Ajuste dinâmico: {0}",
+                        ["Enabled"] = "Ativado",
+                        ["Disabled"] = "Desativado",
+                        ["Toggle On"] = "Ajuste dinâmico de FPS ativado",
+                        ["Toggle Off"] = "Ajuste dinâmico de FPS desativado",
+                        ["Default FPS Restored"] = "FPS restaurado para 60",
+                        ["Help Header"] = "Ajuda do ServerOptimizer:"
+                    };
+                    break;
+                    
                 default:
-                    LoadDefaultLanguageMessages(language, messages);
+                    LoadMoreLanguages(language, messages);
                     break;
             }
             
             lang.RegisterMessages(messages, this, language);
         }
 
-        private void LoadDefaultLanguageMessages(string language, Dictionary<string, string> messages)
+        private void LoadMoreLanguages(string language, Dictionary<string, string> messages)
         {
-            if (language == "fr")
+            switch (language)
             {
-                messages["No Permission"] = "Vous n'avez pas la permission d'utiliser cette commande";
-                messages["FPS Adjusted"] = "FPS du serveur ajustés à {0} ({1} joueurs en ligne)";
-                messages["Status Header"] = "État du ServerOptimizer:";
-                messages["Enabled"] = "Activé";
-                messages["Disabled"] = "Désactivé";
-            }
-            else if (language == "de")
-            {
-                messages["No Permission"] = "Sie haben keine Berechtigung, diesen Befehl zu verwenden";
-                messages["FPS Adjusted"] = "Server-FPS auf {0} eingestellt ({1} Spieler online)";
-                messages["Status Header"] = "ServerOptimizer-Status:";
-                messages["Enabled"] = "Aktiviert";
-                messages["Disabled"] = "Deaktiviert";
+                case "af":
+                    messages["No Permission"] = "Jy het nie toestemming om hierdie opdrag te gebruik nie";
+                    messages["FPS Adjusted"] = "Bediener FPS aangepas na {0} ({1} spelers aanlyn)";
+                    messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Enabled"] = "Geaktiveer";
+                    messages["Disabled"] = "Gedeaktiveer";
+                    messages["Help Header"] = "ServerOptimizer Hulp:";
+                    break;
+                    
+                case "ar":
+                    messages["No Permission"] = "ليس لديك إذن لاستخدام هذا الأمر";
+                    messages["FPS Adjusted"] = "تم ضبط FPS الخادم إلى {0} ({1} لاعب متصل)";
+                    messages["Status Header"] = "حالة ServerOptimizer:";
+                    messages["Enabled"] = "مفعل";
+                    messages["Disabled"] = "معطل";
+                    messages["Help Header"] = "مساعدة ServerOptimizer:";
+                    break;
+                    
+                case "zh-CN":
+                    messages["No Permission"] = "您没有权限使用此命令";
+                    messages["FPS Adjusted"] = "服务器FPS已调整为 {0} ({1} 玩家在线)";
+                    messages["Status Header"] = "ServerOptimizer 状态:";
+                    messages["Enabled"] = "已启用";
+                    messages["Disabled"] = "已禁用";
+                    messages["Help Header"] = "ServerOptimizer 帮助:";
+                    break;
+                    
+                case "zh-TW":
+                    messages["No Permission"] = "您沒有權限使用此命令";
+                    messages["FPS Adjusted"] = "伺服器FPS已調整為 {0} ({1} 玩家線上)";
+                    messages["Status Header"] = "ServerOptimizer 狀態:";
+                    messages["Enabled"] = "已啟用";
+                    messages["Disabled"] = "已禁用";
+                    messages["Help Header"] = "ServerOptimizer 幫助:";
+                    break;
+                    
+                case "cs":
+                    messages["No Permission"] = "Nemáte oprávnění k použití tohoto příkazu";
+                    messages["FPS Adjusted"] = "FPS serveru nastaveno na {0} ({1} hráčů online)";
+                    messages["Status Header"] = "Stav ServerOptimizer:";
+                    messages["Enabled"] = "Povoleno";
+                    messages["Disabled"] = "Zakázáno";
+                    messages["Help Header"] = "Nápověda ServerOptimizer:";
+                    break;
+                    
+                case "da":
+                    messages["No Permission"] = "Du har ikke tilladelse til at bruge denne kommando";
+                    messages["FPS Adjusted"] = "Server FPS justeret til {0} ({1} spillere online)";
+                    messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Enabled"] = "Aktiveret";
+                    messages["Disabled"] = "Deaktiveret";
+                    messages["Help Header"] = "ServerOptimizer Hjælp:";
+                    break;
+                    
+                case "nl":
+                    messages["No Permission"] = "Je hebt geen toestemming om dit commando te gebruiken";
+                    messages["FPS Adjusted"] = "Server FPS aangepast naar {0} ({1} spelers online)";
+                    messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Enabled"] = "Ingeschakeld";
+                    messages["Disabled"] = "Uitgeschakeld";
+                    messages["Help Header"] = "ServerOptimizer Hulp:";
+                    break;
+
+                case "fi":
+                    messages["No Permission"] = "Sinulla ei ole lupaa käyttää tätä komentoa";
+                    messages["FPS Adjusted"] = "Palvelimen FPS säädetty arvoon {0} ({1} pelaajaa online)";
+                    messages["Status Header"] = "ServerOptimizer Tila:";
+                    messages["Enabled"] = "Käytössä";
+                    messages["Disabled"] = "Pois käytöstä";
+                    messages["Help Header"] = "ServerOptimizer Ohje:";
+                    break;
+                    
+                case "el":
+                    messages["No Permission"] = "Δεν έχετε άδεια να χρησιμοποιήσετε αυτήν την εντολή";
+                    messages["FPS Adjusted"] = "Τα FPS του διακομιστή προσαρμόστηκαν σε {0} ({1} παίκτες σε σύνδεση)";
+                    messages["Status Header"] = "Κατάσταση ServerOptimizer:";
+                    messages["Enabled"] = "Ενεργοποιημένο";
+                    messages["Disabled"] = "Απενεργοποιημένο";
+                    messages["Help Header"] = "Βοήθεια ServerOptimizer:";
+                    break;
+                    
+                case "he":
+                    messages["No Permission"] = "אין לך הרשאה להשתמש בפקודה זו";
+                    messages["FPS Adjusted"] = "ה-FPS של השרת הותאם ל- {0} ({1} שחקנים מחוברים)";
+                    messages["Status Header"] = "מצב ServerOptimizer:";
+                    messages["Enabled"] = "מופעל";
+                    messages["Disabled"] = "מושבת";
+                    messages["Help Header"] = "עזרה ServerOptimizer:";
+                    break;
+                    
+                case "hu":
+                    messages["No Permission"] = "Nincs engedélye ennek a parancsnak a használatára";
+                    messages["FPS Adjusted"] = "Szerver FPS beállítva {0} értékre ({1} játékos online)";
+                    messages["Status Header"] = "ServerOptimizer Állapot:";
+                    messages["Enabled"] = "Engedélyezve";
+                    messages["Disabled"] = "Letiltva";
+                    messages["Help Header"] = "ServerOptimizer Súgó:";
+                    break;
+
+                case "ja":
+                    messages["No Permission"] = "このコマンドを使用する権限がありません";
+                    messages["FPS Adjusted"] = "サーバーFPSを {0} に調整しました ({1} 人のプレイヤーがオンライン)";
+                    messages["Status Header"] = "ServerOptimizer 状態:";
+                    messages["Enabled"] = "有効";
+                    messages["Disabled"] = "無効";
+                    messages["Help Header"] = "ServerOptimizer ヘルプ:";
+                    break;
+                    
+                case "ko":
+                    messages["No Permission"] = "이 명령을 사용할 권한이 없습니다";
+                    messages["FPS Adjusted"] = "서버 FPS가 {0}로 조정되었습니다 (온라인 플레이어 {1}명)";
+                    messages["Status Header"] = "ServerOptimizer 상태:";
+                    messages["Enabled"] = "활성화됨";
+                    messages["Disabled"] = "비활성화됨";
+                    messages["Help Header"] = "ServerOptimizer 도움말:";
+                    break;
+
+                case "no":
+                    messages["No Permission"] = "Du har ikke tillatelse til å bruke denne kommandoen";
+                    messages["FPS Adjusted"] = "Server FPS justert til {0} ({1} spillere pålogget)";
+                    messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Enabled"] = "Aktivert";
+                    messages["Disabled"] = "Deaktivert";
+                    messages["Help Header"] = "ServerOptimizer Hjelp:";
+                    break;
+
+                case "pl":
+                    messages["No Permission"] = "Nie masz uprawnień do użycia tej komendy";
+                    messages["FPS Adjusted"] = "FPS serwera dostosowano do {0} ({1} graczy online)";
+                    messages["Status Header"] = "Status ServerOptimizer:";
+                    messages["Enabled"] = "Włączone";
+                    messages["Disabled"] = "Wyłączone";
+                    messages["Help Header"] = "Pomoc ServerOptimizer:";
+                    break;
+                    
+                case "ro":
+                    messages["No Permission"] = "Nu ai permisiunea de a folosi această comandă";
+                    messages["FPS Adjusted"] = "FPS-ul serverului ajustat la {0} ({1} jucători online)";
+                    messages["Status Header"] = "Status ServerOptimizer:";
+                    messages["Enabled"] = "Activat";
+                    messages["Disabled"] = "Dezactivat";
+                    messages["Help Header"] = "Ajutor ServerOptimizer:";
+                    break;
+
+                case "sr-Cyrl":
+                    messages["No Permission"] = "Немате дозволу да користите ову команду";
+                    messages["FPS Adjusted"] = "ФПС сервера подешен на {0} ({1} играча на мрежи)";
+                    messages["Status Header"] = "Статус ServerOptimizer:";
+                    messages["Enabled"] = "Омогућено";
+                    messages["Disabled"] = "Онемогућено";
+                    messages["Help Header"] = "Помоћ за ServerOptimizer:";
+                    break;
+                    
+                case "sv":
+                    messages["No Permission"] = "Du har inte behörighet att använda detta kommando";
+                    messages["FPS Adjusted"] = "Server FPS justerat till {0} ({1} spelare online)";
+                    messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Enabled"] = "Aktiverad";
+                    messages["Disabled"] = "Inaktiverad";
+                    messages["Help Header"] = "ServerOptimizer Hjälp:";
+                    break;
+
+                case "tr":
+                    messages["No Permission"] = "Bu komutu kullanma izniniz yok";
+                    messages["FPS Adjusted"] = "Sunucu FPS {0} olarak ayarlandı ({1} oyuncu çevrimiçi)";
+                    messages["Status Header"] = "ServerOptimizer Durumu:";
+                    messages["Enabled"] = "Etkin";
+                    messages["Disabled"] = "Devre Dışı";
+                    messages["Help Header"] = "ServerOptimizer Yardım:";
+                    break;
+
+                case "uk":
+                    messages["No Permission"] = "У вас немає дозволу на використання цієї команди";
+                    messages["FPS Adjusted"] = "FPS сервера налаштовано на {0} ({1} гравців онлайн)";
+                    messages["Status Header"] = "Статус ServerOptimizer:";
+                    messages["Enabled"] = "Увімкнено";
+                    messages["Disabled"] = "Вимкнено";
+                    messages["Help Header"] = "Довідка ServerOptimizer:";
+                    break;
+
+                case "vi":
+                    messages["No Permission"] = "Bạn không có quyền sử dụng lệnh này";
+                    messages["FPS Adjusted"] = "FPS máy chủ được điều chỉnh thành {0} ({1} người chơi trực tuyến)";
+                    messages["Status Header"] = "Trạng thái ServerOptimizer:";
+                    messages["Enabled"] = "Đã bật";
+                    messages["Disabled"] = "Đã tắt";
+                    messages["Help Header"] = "Trợ giúp ServerOptimizer:";
+                    break;
             }
         }
 
