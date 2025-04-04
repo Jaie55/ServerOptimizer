@@ -11,7 +11,7 @@ using Oxide.Core.Plugins;
 
 namespace Carbon.Plugins
 {
-    [Info("ServerOptimizer", "Jaie55", "1.0.0")]
+    [Info("ServerOptimizer", "Jaie55", "1.0.1")]
     [Description("Dynamically optimizes server FPS based on player count to improve performance")]
     public class ServerOptimizer : CarbonPlugin
     {
@@ -267,10 +267,11 @@ namespace Carbon.Plugins
             }
             else
             {
-                ConsoleSystem.Run(ConsoleSystem.Option.Server, "fps.limit", 60);
-                _currentFps = 60;
+                int maxFps = _config.MaxFps;
+                ConsoleSystem.Run(ConsoleSystem.Option.Server, "fps.limit", maxFps);
+                _currentFps = maxFps;
                 SendReply(player, $"{_config.ChatPrefix}{GetLang("Toggle Off", player.UserIDString)}");
-                SendReply(player, $"{_config.ChatPrefix}{GetLang("Default FPS Restored", player.UserIDString)}");
+                SendReply(player, $"{_config.ChatPrefix}{GetLang("Default FPS Restored", player.UserIDString).Replace("{0}", maxFps.ToString())}");
             }
         }
         
@@ -356,7 +357,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Disabled",
                         ["Toggle On"] = "Dynamic FPS adjustment enabled",
                         ["Toggle Off"] = "Dynamic FPS adjustment disabled",
-                        ["Default FPS Restored"] = "FPS restored to 60",
+                        ["Default FPS Restored"] = "FPS restored to {0}",
                         ["Help Header"] = "ServerOptimizer Help:"
                     };
                     break;
@@ -374,7 +375,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Nay",
                         ["Toggle On"] = "Dynamic FPS adjustment be enabled, arr!",
                         ["Toggle Off"] = "Dynamic FPS adjustment be disabled, arr!",
-                        ["Default FPS Restored"] = "FPS restored to 60, full sail ahead!",
+                        ["Default FPS Restored"] = "FPS restored to {0}, full sail ahead!",
                         ["Help Header"] = "ServerOptimizer Treasure Map:"
                     };
                     break;
@@ -392,7 +393,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Desactivado",
                         ["Toggle On"] = "Ajuste dinámico de FPS activado",
                         ["Toggle Off"] = "Ajuste dinámico de FPS desactivado",
-                        ["Default FPS Restored"] = "FPS restaurado a 60",
+                        ["Default FPS Restored"] = "FPS restaurado a {0}",
                         ["Help Header"] = "Ayuda de ServerOptimizer:"
                     };
                     break;
@@ -410,7 +411,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Desactivado",
                         ["Toggle On"] = "Ajuste dinámico de FPS activado",
                         ["Toggle Off"] = "Ajuste dinámico de FPS desactivado",
-                        ["Default FPS Restored"] = "FPS restaurados a 60",
+                        ["Default FPS Restored"] = "FPS restaurados a {0}",
                         ["Help Header"] = "Ayuda de ServerOptimizer:"
                     };
                     break;
@@ -428,7 +429,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Desactivat",
                         ["Toggle On"] = "Ajust dinàmic de FPS activat",
                         ["Toggle Off"] = "Ajust dinàmic de FPS desactivat",
-                        ["Default FPS Restored"] = "FPS restaurats a 60",
+                        ["Default FPS Restored"] = "FPS restaurats a {0}",
                         ["Help Header"] = "Ajuda de ServerOptimizer:"
                     };
                     break;
@@ -446,7 +447,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Désactivé",
                         ["Toggle On"] = "Ajustement dynamique des FPS activé",
                         ["Toggle Off"] = "Ajustement dynamique des FPS désactivé",
-                        ["Default FPS Restored"] = "FPS restaurés à 60",
+                        ["Default FPS Restored"] = "FPS restaurés à {0}",
                         ["Help Header"] = "Aide de ServerOptimizer:"
                     };
                     break;
@@ -464,7 +465,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Deaktiviert",
                         ["Toggle On"] = "Dynamische FPS-Anpassung aktiviert",
                         ["Toggle Off"] = "Dynamische FPS-Anpassung deaktiviert",
-                        ["Default FPS Restored"] = "FPS auf 60 zurückgesetzt",
+                        ["Default FPS Restored"] = "FPS auf {0} zurückgesetzt",
                         ["Help Header"] = "ServerOptimizer-Hilfe:"
                     };
                     break;
@@ -482,7 +483,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Disattivato",
                         ["Toggle On"] = "Regolazione dinamica FPS attivata",
                         ["Toggle Off"] = "Regolazione dinamica FPS disattivata",
-                        ["Default FPS Restored"] = "FPS ripristinati a 60",
+                        ["Default FPS Restored"] = "FPS ripristinati a {0}",
                         ["Help Header"] = "Aiuto ServerOptimizer:"
                     };
                     break;
@@ -500,7 +501,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Выключено",
                         ["Toggle On"] = "Динамическая настройка FPS включена",
                         ["Toggle Off"] = "Динамическая настройка FPS выключена",
-                        ["Default FPS Restored"] = "FPS восстановлен до 60",
+                        ["Default FPS Restored"] = "FPS восстановлен до {0}",
                         ["Help Header"] = "Справка ServerOptimizer:"
                     };
                     break;
@@ -518,7 +519,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Desativado",
                         ["Toggle On"] = "Ajuste dinâmico de FPS ativado",
                         ["Toggle Off"] = "Ajuste dinâmico de FPS desativado",
-                        ["Default FPS Restored"] = "FPS restaurado para 60",
+                        ["Default FPS Restored"] = "FPS restaurado para {0}",
                         ["Help Header"] = "Ajuda do ServerOptimizer:"
                     };
                     break;
@@ -536,7 +537,7 @@ namespace Carbon.Plugins
                         ["Disabled"] = "Desativado",
                         ["Toggle On"] = "Ajuste dinâmico de FPS ativado",
                         ["Toggle Off"] = "Ajuste dinâmico de FPS desativado",
-                        ["Default FPS Restored"] = "FPS restaurado para 60",
+                        ["Default FPS Restored"] = "FPS restaurado para {0}",
                         ["Help Header"] = "Ajuda do ServerOptimizer:"
                     };
                     break;
@@ -557,8 +558,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Jy het nie toestemming om hierdie opdrag te gebruik nie";
                     messages["FPS Adjusted"] = "Bediener FPS aangepas na {0} ({1} spelers aanlyn)";
                     messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Status Current FPS"] = "- Huidige FPS: {0}";
+                    messages["Status Player Count"] = "- Spelers aanlyn: {0}";
+                    messages["Status Dynamic Mode"] = "- Dinamiese aanpassing: {0}";
                     messages["Enabled"] = "Geaktiveer";
                     messages["Disabled"] = "Gedeaktiveer";
+                    messages["Toggle On"] = "Dinamiese FPS-aanpassing geaktiveer";
+                    messages["Toggle Off"] = "Dinamiese FPS-aanpassing gedeaktiveer";
+                    messages["Default FPS Restored"] = "FPS herstel na {0}";
                     messages["Help Header"] = "ServerOptimizer Hulp:";
                     break;
                     
@@ -566,8 +573,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "ليس لديك إذن لاستخدام هذا الأمر";
                     messages["FPS Adjusted"] = "تم ضبط FPS الخادم إلى {0} ({1} لاعب متصل)";
                     messages["Status Header"] = "حالة ServerOptimizer:";
+                    messages["Status Current FPS"] = "- FPS الحالي: {0}";
+                    messages["Status Player Count"] = "- اللاعبين المتصلين: {0}";
+                    messages["Status Dynamic Mode"] = "- الضبط الديناميكي: {0}";
                     messages["Enabled"] = "مفعل";
                     messages["Disabled"] = "معطل";
+                    messages["Toggle On"] = "تم تفعيل ضبط FPS الديناميكي";
+                    messages["Toggle Off"] = "تم تعطيل ضبط FPS الديناميكي";
+                    messages["Default FPS Restored"] = "تمت استعادة FPS إلى {0}";
                     messages["Help Header"] = "مساعدة ServerOptimizer:";
                     break;
                     
@@ -575,8 +588,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "您没有权限使用此命令";
                     messages["FPS Adjusted"] = "服务器FPS已调整为 {0} ({1} 玩家在线)";
                     messages["Status Header"] = "ServerOptimizer 状态:";
+                    messages["Status Current FPS"] = "- 当前 FPS: {0}";
+                    messages["Status Player Count"] = "- 在线玩家: {0}";
+                    messages["Status Dynamic Mode"] = "- 动态调整: {0}";
                     messages["Enabled"] = "已启用";
                     messages["Disabled"] = "已禁用";
+                    messages["Toggle On"] = "已启用动态FPS调整";
+                    messages["Toggle Off"] = "已禁用动态FPS调整";
+                    messages["Default FPS Restored"] = "FPS已恢复至{0}";
                     messages["Help Header"] = "ServerOptimizer 帮助:";
                     break;
                     
@@ -584,8 +603,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "您沒有權限使用此命令";
                     messages["FPS Adjusted"] = "伺服器FPS已調整為 {0} ({1} 玩家線上)";
                     messages["Status Header"] = "ServerOptimizer 狀態:";
+                    messages["Status Current FPS"] = "- 目前 FPS: {0}";
+                    messages["Status Player Count"] = "- 線上玩家: {0}";
+                    messages["Status Dynamic Mode"] = "- 動態調整: {0}";
                     messages["Enabled"] = "已啟用";
                     messages["Disabled"] = "已禁用";
+                    messages["Toggle On"] = "已啟用動態FPS調整";
+                    messages["Toggle Off"] = "已禁用動態FPS調整";
+                    messages["Default FPS Restored"] = "FPS已恢復至{0}";
                     messages["Help Header"] = "ServerOptimizer 幫助:";
                     break;
                     
@@ -593,8 +618,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Nemáte oprávnění k použití tohoto příkazu";
                     messages["FPS Adjusted"] = "FPS serveru nastaveno na {0} ({1} hráčů online)";
                     messages["Status Header"] = "Stav ServerOptimizer:";
+                    messages["Status Current FPS"] = "- Aktuální FPS: {0}";
+                    messages["Status Player Count"] = "- Hráčů online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynamické nastavení: {0}";
                     messages["Enabled"] = "Povoleno";
                     messages["Disabled"] = "Zakázáno";
+                    messages["Toggle On"] = "Dynamické nastavení FPS povoleno";
+                    messages["Toggle Off"] = "Dynamické nastavení FPS zakázáno";
+                    messages["Default FPS Restored"] = "FPS obnoveno na {0}";
                     messages["Help Header"] = "Nápověda ServerOptimizer:";
                     break;
                     
@@ -602,8 +633,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Du har ikke tilladelse til at bruge denne kommando";
                     messages["FPS Adjusted"] = "Server FPS justeret til {0} ({1} spillere online)";
                     messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Status Current FPS"] = "- Nuværende FPS: {0}";
+                    messages["Status Player Count"] = "- Spillere online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynamisk justering: {0}";
                     messages["Enabled"] = "Aktiveret";
                     messages["Disabled"] = "Deaktiveret";
+                    messages["Toggle On"] = "Dynamisk FPS-justering aktiveret";
+                    messages["Toggle Off"] = "Dynamisk FPS-justering deaktiveret";
+                    messages["Default FPS Restored"] = "FPS gendannet til {0}";
                     messages["Help Header"] = "ServerOptimizer Hjælp:";
                     break;
                     
@@ -611,8 +648,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Je hebt geen toestemming om dit commando te gebruiken";
                     messages["FPS Adjusted"] = "Server FPS aangepast naar {0} ({1} spelers online)";
                     messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Status Current FPS"] = "- Huidige FPS: {0}";
+                    messages["Status Player Count"] = "- Spelers online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynamische aanpassing: {0}";
                     messages["Enabled"] = "Ingeschakeld";
                     messages["Disabled"] = "Uitgeschakeld";
+                    messages["Toggle On"] = "Dynamische FPS-aanpassing ingeschakeld";
+                    messages["Toggle Off"] = "Dynamische FPS-aanpassing uitgeschakeld";
+                    messages["Default FPS Restored"] = "FPS hersteld naar {0}";
                     messages["Help Header"] = "ServerOptimizer Hulp:";
                     break;
 
@@ -620,8 +663,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Sinulla ei ole lupaa käyttää tätä komentoa";
                     messages["FPS Adjusted"] = "Palvelimen FPS säädetty arvoon {0} ({1} pelaajaa online)";
                     messages["Status Header"] = "ServerOptimizer Tila:";
+                    messages["Status Current FPS"] = "- Nykyinen FPS: {0}";
+                    messages["Status Player Count"] = "- Pelaajia online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynaaminen säätö: {0}";
                     messages["Enabled"] = "Käytössä";
                     messages["Disabled"] = "Pois käytöstä";
+                    messages["Toggle On"] = "Dynaaminen FPS-säätö otettu käyttöön";
+                    messages["Toggle Off"] = "Dynaaminen FPS-säätö poistettu käytöstä";
+                    messages["Default FPS Restored"] = "FPS palautettu arvoon {0}";
                     messages["Help Header"] = "ServerOptimizer Ohje:";
                     break;
                     
@@ -629,8 +678,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Δεν έχετε άδεια να χρησιμοποιήσετε αυτήν την εντολή";
                     messages["FPS Adjusted"] = "Τα FPS του διακομιστή προσαρμόστηκαν σε {0} ({1} παίκτες σε σύνδεση)";
                     messages["Status Header"] = "Κατάσταση ServerOptimizer:";
+                    messages["Status Current FPS"] = "- Τρέχοντα FPS: {0}";
+                    messages["Status Player Count"] = "- Παίκτες σε σύνδεση: {0}";
+                    messages["Status Dynamic Mode"] = "- Δυναμική προσαρμογή: {0}";
                     messages["Enabled"] = "Ενεργοποιημένο";
                     messages["Disabled"] = "Απενεργοποιημένο";
+                    messages["Toggle On"] = "Η δυναμική προσαρμογή FPS ενεργοποιήθηκε";
+                    messages["Toggle Off"] = "Η δυναμική προσαρμογή FPS απενεργοποιήθηκε";
+                    messages["Default FPS Restored"] = "Τα FPS επαναφέρθηκαν στο {0}";
                     messages["Help Header"] = "Βοήθεια ServerOptimizer:";
                     break;
                     
@@ -638,8 +693,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "אין לך הרשאה להשתמש בפקודה זו";
                     messages["FPS Adjusted"] = "ה-FPS של השרת הותאם ל- {0} ({1} שחקנים מחוברים)";
                     messages["Status Header"] = "מצב ServerOptimizer:";
+                    messages["Status Current FPS"] = "- FPS נוכחי: {0}";
+                    messages["Status Player Count"] = "- שחקנים מחוברים: {0}";
+                    messages["Status Dynamic Mode"] = "- התאמה דינמית: {0}";
                     messages["Enabled"] = "מופעל";
                     messages["Disabled"] = "מושבת";
+                    messages["Toggle On"] = "התאמת FPS דינמית הופעלה";
+                    messages["Toggle Off"] = "התאמת FPS דינמית הושבתה";
+                    messages["Default FPS Restored"] = "ה-FPS שוחזר ל-{0}";
                     messages["Help Header"] = "עזרה ServerOptimizer:";
                     break;
                     
@@ -647,8 +708,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Nincs engedélye ennek a parancsnak a használatára";
                     messages["FPS Adjusted"] = "Szerver FPS beállítva {0} értékre ({1} játékos online)";
                     messages["Status Header"] = "ServerOptimizer Állapot:";
+                    messages["Status Current FPS"] = "- Jelenlegi FPS: {0}";
+                    messages["Status Player Count"] = "- Játékosok online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dinamikus beállítás: {0}";
                     messages["Enabled"] = "Engedélyezve";
                     messages["Disabled"] = "Letiltva";
+                    messages["Toggle On"] = "Dinamikus FPS beállítás engedélyezve";
+                    messages["Toggle Off"] = "Dinamikus FPS beállítás letiltva";
+                    messages["Default FPS Restored"] = "FPS visszaállítva {0}-ra";
                     messages["Help Header"] = "ServerOptimizer Súgó:";
                     break;
 
@@ -656,8 +723,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "このコマンドを使用する権限がありません";
                     messages["FPS Adjusted"] = "サーバーFPSを {0} に調整しました ({1} 人のプレイヤーがオンライン)";
                     messages["Status Header"] = "ServerOptimizer 状態:";
+                    messages["Status Current FPS"] = "- 現在のFPS: {0}";
+                    messages["Status Player Count"] = "- オンラインプレイヤー: {0}";
+                    messages["Status Dynamic Mode"] = "- 動的調整: {0}";
                     messages["Enabled"] = "有効";
                     messages["Disabled"] = "無効";
+                    messages["Toggle On"] = "動的FPS調整が有効になりました";
+                    messages["Toggle Off"] = "動的FPS調整が無効になりました";
+                    messages["Default FPS Restored"] = "FPSが{0}に復元されました";
                     messages["Help Header"] = "ServerOptimizer ヘルプ:";
                     break;
                     
@@ -665,8 +738,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "이 명령을 사용할 권한이 없습니다";
                     messages["FPS Adjusted"] = "서버 FPS가 {0}로 조정되었습니다 (온라인 플레이어 {1}명)";
                     messages["Status Header"] = "ServerOptimizer 상태:";
+                    messages["Status Current FPS"] = "- 현재 FPS: {0}";
+                    messages["Status Player Count"] = "- 온라인 플레이어: {0}";
+                    messages["Status Dynamic Mode"] = "- 동적 조정: {0}";
                     messages["Enabled"] = "활성화됨";
                     messages["Disabled"] = "비활성화됨";
+                    messages["Toggle On"] = "동적 FPS 조정이 활성화되었습니다";
+                    messages["Toggle Off"] = "동적 FPS 조정이 비활성화되었습니다";
+                    messages["Default FPS Restored"] = "FPS가 {0}으로 복원되었습니다";
                     messages["Help Header"] = "ServerOptimizer 도움말:";
                     break;
 
@@ -674,8 +753,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Du har ikke tillatelse til å bruke denne kommandoen";
                     messages["FPS Adjusted"] = "Server FPS justert til {0} ({1} spillere pålogget)";
                     messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Status Current FPS"] = "- Nåværende FPS: {0}";
+                    messages["Status Player Count"] = "- Spillere pålogget: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynamisk justering: {0}";
                     messages["Enabled"] = "Aktivert";
                     messages["Disabled"] = "Deaktivert";
+                    messages["Toggle On"] = "Dynamisk FPS-justering aktivert";
+                    messages["Toggle Off"] = "Dynamisk FPS-justering deaktivert";
+                    messages["Default FPS Restored"] = "FPS gjenopprettet til {0}";
                     messages["Help Header"] = "ServerOptimizer Hjelp:";
                     break;
 
@@ -683,8 +768,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Nie masz uprawnień do użycia tej komendy";
                     messages["FPS Adjusted"] = "FPS serwera dostosowano do {0} ({1} graczy online)";
                     messages["Status Header"] = "Status ServerOptimizer:";
+                    messages["Status Current FPS"] = "- Obecny FPS: {0}";
+                    messages["Status Player Count"] = "- Gracze online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynamiczna regulacja: {0}";
                     messages["Enabled"] = "Włączone";
                     messages["Disabled"] = "Wyłączone";
+                    messages["Toggle On"] = "Dynamiczna regulacja FPS włączona";
+                    messages["Toggle Off"] = "Dynamiczna regulacja FPS wyłączona";
+                    messages["Default FPS Restored"] = "FPS przywrócony do {0}";
                     messages["Help Header"] = "Pomoc ServerOptimizer:";
                     break;
                     
@@ -692,8 +783,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Nu ai permisiunea de a folosi această comandă";
                     messages["FPS Adjusted"] = "FPS-ul serverului ajustat la {0} ({1} jucători online)";
                     messages["Status Header"] = "Status ServerOptimizer:";
+                    messages["Status Current FPS"] = "- FPS Actual: {0}";
+                    messages["Status Player Count"] = "- Jucători online: {0}";
+                    messages["Status Dynamic Mode"] = "- Ajustare dinamică: {0}";
                     messages["Enabled"] = "Activat";
                     messages["Disabled"] = "Dezactivat";
+                    messages["Toggle On"] = "Ajustare dinamică FPS activată";
+                    messages["Toggle Off"] = "Ajustare dinamică FPS dezactivată";
+                    messages["Default FPS Restored"] = "FPS restaurat la {0}";
                     messages["Help Header"] = "Ajutor ServerOptimizer:";
                     break;
 
@@ -701,8 +798,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Немате дозволу да користите ову команду";
                     messages["FPS Adjusted"] = "ФПС сервера подешен на {0} ({1} играча на мрежи)";
                     messages["Status Header"] = "Статус ServerOptimizer:";
+                    messages["Status Current FPS"] = "- Тренутни FPS: {0}";
+                    messages["Status Player Count"] = "- Играчи на мрежи: {0}";
+                    messages["Status Dynamic Mode"] = "- Динамичко подешавање: {0}";
                     messages["Enabled"] = "Омогућено";
                     messages["Disabled"] = "Онемогућено";
+                    messages["Toggle On"] = "Динамичко подешавање FPS-а омогућено";
+                    messages["Toggle Off"] = "Динамичко подешавање FPS-а онемогућено";
+                    messages["Default FPS Restored"] = "FPS враћен на {0}";
                     messages["Help Header"] = "Помоћ за ServerOptimizer:";
                     break;
                     
@@ -710,8 +813,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Du har inte behörighet att använda detta kommando";
                     messages["FPS Adjusted"] = "Server FPS justerat till {0} ({1} spelare online)";
                     messages["Status Header"] = "ServerOptimizer Status:";
+                    messages["Status Current FPS"] = "- Nuvarande FPS: {0}";
+                    messages["Status Player Count"] = "- Spelare online: {0}";
+                    messages["Status Dynamic Mode"] = "- Dynamisk justering: {0}";
                     messages["Enabled"] = "Aktiverad";
                     messages["Disabled"] = "Inaktiverad";
+                    messages["Toggle On"] = "Dynamisk FPS-justering aktiverad";
+                    messages["Toggle Off"] = "Dynamisk FPS-justering inaktiverad";
+                    messages["Default FPS Restored"] = "FPS återställt till {0}";
                     messages["Help Header"] = "ServerOptimizer Hjälp:";
                     break;
 
@@ -719,8 +828,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Bu komutu kullanma izniniz yok";
                     messages["FPS Adjusted"] = "Sunucu FPS {0} olarak ayarlandı ({1} oyuncu çevrimiçi)";
                     messages["Status Header"] = "ServerOptimizer Durumu:";
+                    messages["Status Current FPS"] = "- Mevcut FPS: {0}";
+                    messages["Status Player Count"] = "- Çevrimiçi oyuncular: {0}";
+                    messages["Status Dynamic Mode"] = "- Dinamik ayarlama: {0}";
                     messages["Enabled"] = "Etkin";
                     messages["Disabled"] = "Devre Dışı";
+                    messages["Toggle On"] = "Dinamik FPS ayarlaması etkinleştirildi";
+                    messages["Toggle Off"] = "Dinamik FPS ayarlaması devre dışı bırakıldı";
+                    messages["Default FPS Restored"] = "FPS {0}'a geri yüklendi";
                     messages["Help Header"] = "ServerOptimizer Yardım:";
                     break;
 
@@ -728,8 +843,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "У вас немає дозволу на використання цієї команди";
                     messages["FPS Adjusted"] = "FPS сервера налаштовано на {0} ({1} гравців онлайн)";
                     messages["Status Header"] = "Статус ServerOptimizer:";
+                    messages["Status Current FPS"] = "- Поточний FPS: {0}";
+                    messages["Status Player Count"] = "- Гравців онлайн: {0}";
+                    messages["Status Dynamic Mode"] = "- Динамічне налаштування: {0}";
                     messages["Enabled"] = "Увімкнено";
                     messages["Disabled"] = "Вимкнено";
+                    messages["Toggle On"] = "Динамічне налаштування FPS увімкнено";
+                    messages["Toggle Off"] = "Динамічне налаштування FPS вимкнено";
+                    messages["Default FPS Restored"] = "FPS відновлено до {0}";
                     messages["Help Header"] = "Довідка ServerOptimizer:";
                     break;
 
@@ -737,8 +858,14 @@ namespace Carbon.Plugins
                     messages["No Permission"] = "Bạn không có quyền sử dụng lệnh này";
                     messages["FPS Adjusted"] = "FPS máy chủ được điều chỉnh thành {0} ({1} người chơi trực tuyến)";
                     messages["Status Header"] = "Trạng thái ServerOptimizer:";
+                    messages["Status Current FPS"] = "- FPS hiện tại: {0}";
+                    messages["Status Player Count"] = "- Người chơi trực tuyến: {0}";
+                    messages["Status Dynamic Mode"] = "- Điều chỉnh động: {0}";
                     messages["Enabled"] = "Đã bật";
                     messages["Disabled"] = "Đã tắt";
+                    messages["Toggle On"] = "Điều chỉnh FPS động đã được bật";
+                    messages["Toggle Off"] = "Điều chỉnh FPS động đã được tắt";
+                    messages["Default FPS Restored"] = "FPS được khôi phục về {0}";
                     messages["Help Header"] = "Trợ giúp ServerOptimizer:";
                     break;
             }
