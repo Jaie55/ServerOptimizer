@@ -1,7 +1,9 @@
-# ServerOptimizer v1.0.1
+# ServerOptimizer v1.0.0
 
 ## Description
 Optimizes server FPS dynamically based on player count. Reduces CPU usage when server is empty.
+https://github.com/Jaie55/ServerOptimizer
+https://umod.org/plugins/ZkgZwan5WM
 
 ## Features
 - Dynamic FPS adjustment based on player count
@@ -89,11 +91,11 @@ MIT License - Copyright (c) 2025 Jaie55
 - The plugin is designed to have minimal performance impact
 - FPS checks occur every 30 seconds (configurable)
 - The plugin properly cleans up resources when unloaded
-- FPS formula: FPS = BaseFps + (Players * IncrementPerPlayer), limited by MaxFps
+- FPS formula: FPS = BaseFps   (Players * IncrementPerPlayer), limited by MaxFps
 
 ---
 
-# ServerOptimizer v1.0.1 (Español)
+# ServerOptimizer v1.0.0 (Español)
 
 ## Descripción
 Optimiza los FPS del servidor según el número de jugadores. Reduce el uso de CPU cuando está vacío.
@@ -184,4 +186,4 @@ MIT License - Copyright (c) 2025 Jaie55
 - El plugin está diseñado para tener un impacto mínimo en el rendimiento
 - Las verificaciones de FPS ocurren cada 30 segundos (configurable)
 - El plugin limpia correctamente los recursos al descargar
-- Fórmula FPS: FPS = BaseFps + (Jugadores * IncrementoFPS), limitado por MaxFps
+- Fórmula FPS: FPS = BaseFps   (Jugadores * IncrementoFPS), limitado por MaxFps
