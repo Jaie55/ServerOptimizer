@@ -4,6 +4,7 @@
 Optimizes server FPS dynamically based on player count. Reduces CPU usage when server is empty.
 https://github.com/Jaie55/ServerOptimizer
 https://umod.org/plugins/ZkgZwan5WM
+https://codefling.com/plugins/serveroptimizer
 
 ## Features
 - Dynamic FPS adjustment based on player count
